@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Health Space | SydneyIoT.com.au</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="stylesheets/main.css" />
+    <link rel="stylesheet" href="stylesheets/roundstats.css"/>
+    <script src="js/model.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body onload="fire()">
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBXL5JtEpnRxCX92q-dkC3COhOkx0_8kSA",
+        authDomain: "iot1-c1fbf.firebaseapp.com",
+        databaseURL: "https://iot1-c1fbf.firebaseio.com",
+        projectId: "iot1-c1fbf",
+        storageBucket: "iot1-c1fbf.appspot.com",
+        messagingSenderId: "644075940640"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <nav class="navbar navbar-inverse visible-xs">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">HealthSpace</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Dash</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Health Calculators</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row content">
+        <div class="col-sm-2 sidenav hidden-xs">
+          <h2>HealthSpace</h2>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#section1">Dashboard</a></li>
+            <li><a href="#section2">Live Health Tracker</a></li>
+            <li><a href="#section3">Health History</a></li>
+            <li><a href="#section3">Health Tools</a></li>
+          </ul>
+          <br />
+        </div>
+        <br />
+
+        <div class="col-sm-9">
+          <!--<div class="well">
+            <h4>Dashboard</h4>
+            <p>Some text..</p>
+          </div>-->
+          <h1>Welcome to HealthSpace</h1>
+          <h3>Track your organisations health data</h2>
+            <p>HealthSpace lets you track your overall organisations health & wellbeing by tracking the air-quality within your premises.</p>
+            
+          <div class="row"> 
+            <div class="col-sm-4">
+              <div class="well"> 
+                <div id="statsId" class="stats">
+                  <span id="lastTemp" class="midNumb">0</span><span class="midNumbLabel">Temperature</span></div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="well">
+                <div class="stats">
+                  <span class="midNumb">11</span><span class="midNumbLabel">Light</span></div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="well">
+                <div class="stats">
+                  <span class="midNumb">22.4</span><span class="midNumbLabel">Humidity</span></div>
+              </div>
+              </div>
+            </div>
+            <!--<div class="col-sm-3">
+              <div class="well">
+                <div class="stats">
+                  <span class="midNumb">45<span class="midNumbLabel">Temperature</span></span></div>
+              </div>
+              </div>
+            </div>-->
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="well">
+                <p>Text</p>
+                <p>Text</p>
+                <p>Text</p>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="well">
+                <p>Text</p>
+                <p>Text</p>
+                <p>Text</p>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="well">
+                <p>Text</p>
+                <p>Text</p>
+                <p>Text</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="well">
+                <p>Text</p>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="well">
+                <p>Text</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

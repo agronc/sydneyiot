@@ -1,0 +1,42 @@
+.stats {
+  background: #fff;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  border: 30px solid #01cd74;
+  text-align: center;
+  position: relative;
+}
+.midNumb {
+  display: inline-block;
+  padding-top: 1em;
+  font-size: 32px;
+  font-weight: 500;
+}
+.midNumbLabel {
+  white-space: nowrap;
+  display: block;
+  font-size: 18px;
+}
+.stats:after {
+  content: "";
+  background: trasparent;
+  width: 142%;
+  height: 142%;
+  position: absolute;
+  border-radius: 100%;
+  top: -21%;
+  left: -21%;
+  opacity: 0.6;
+  box-shadow: rgb(75, 75, 75) -3px -5px 3px -3px;
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
