@@ -15,19 +15,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <body onload="fire()">
-    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyBXL5JtEpnRxCX92q-dkC3COhOkx0_8kSA",
-        authDomain: "iot1-c1fbf.firebaseapp.com",
-        databaseURL: "https://iot1-c1fbf.firebaseio.com",
-        projectId: "iot1-c1fbf",
-        storageBucket: "iot1-c1fbf.appspot.com",
-        messagingSenderId: "644075940640"
-      };
-      firebase.initializeApp(config);
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC8OUze6-81iBZYkT4AjOxxwyUKC0sOtvc",
+    authDomain: "avr-iot-f1693.firebaseapp.com",
+    databaseURL: "https://avr-iot-f1693.firebaseio.com",
+    projectId: "avr-iot-f1693",
+    storageBucket: "avr-iot-f1693.appspot.com",
+    messagingSenderId: "409701319888"
+  };
+  firebase.initializeApp(config);
+</script>
     <nav class="navbar navbar-inverse visible-xs">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -81,19 +81,19 @@
             <div class="col-sm-4">
               <div class="well"> 
                 <div id="statsId" class="stats">
-                  <span id="lastTemp" class="midNumb">0</span><span class="midNumbLabel">Temperature</span></div>
+                  <span id="lastTemp" class="midNumb"></span><span class="midNumbLabel">Temperature</span></div>
               </div>
             </div>
             <div class="col-sm-4">
               <div class="well">
-                <div class="stats">
-                  <span class="midNumb">11</span><span class="midNumbLabel">Light</span></div>
+                <div id="statsId_airquality" class="stats">
+                  <span id="lastAirQuality" class="midNumb"></span><span class="midNumbLabel">Air Quality</span></div>
               </div>
             </div>
             <div class="col-sm-4">
               <div class="well">
-                <div class="stats">
-                  <span class="midNumb">22.4</span><span class="midNumbLabel">Humidity</span></div>
+                <div id="statsId_light" class="stats">
+                  <span id="lastLight" class="midNumb"></span><span class="midNumbLabel">Light</span></div>
               </div>
               </div>
             </div>
