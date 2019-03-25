@@ -67,18 +67,25 @@
           <br />
         </div>
         <br />
-
+        <!--<div class="col-sm-4 col-sm-offset-2">
+            <div class="well">
+              <div class="container">
+                <span id="HealthScoreValue">Total health score</span>
+              </div></div></div> -->
         <div class="col-sm-9">
-          <!--<div class="well">
-            <h4>Dashboard</h4>
-            <p>Some text..</p>
-          </div>-->
+          
           <div id="tempSmsAlert" class="container">
   </div>
           <h1>Welcome to HealthSpace</h1>
-          <h3>Track your organisations health data</h2>
-            <p>HealthSpace lets you track your overall organisations health & wellbeing by tracking the air-quality within your premises.</p>
+          <h3 id="">Track your organisations health data</h3>
+            <p>HealthSpace lets you track your overall organisations health & wellbeing by tracking the air-quality, temperature and light intensity.</p>
+            <p>Based on the collected data, we compute IHS (Indoor Health Score)</p>
             
+            <div class="well">
+                <h4 class="totalScore"><span>IHS: <img class="hearticon" style="max-width:60px;" src="assets/heartIcon.png" alt="HeathScore"> </span><span id="HealthScoreValue"></span>/100</h4>
+              </div>
+
+
           <div class="row"> 
             <div class="col-sm-4">
               <div class="well"> 
@@ -133,7 +140,44 @@
           <div class="row">
             <div class="col-sm-8">
               <div class="well">
-                <p>Text</p>
+                <div class="container">
+                  <h2>Data powered recommendations</h2>
+                  <p>Depending on your organizaional health data, we provide curated actionable insights to imrove your indoor environment.</p>
+                
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Recommendations</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Air Quality</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Temperature</a></li>
+                    <li><a data-toggle="tab" href="#menu3">Light intensity</a></li>
+                  </ul>
+                
+                  <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                      <h3>Recommendations</h3>
+                      <li>Recommendation 1</li>
+                      <li>Recommendation 2</li>
+                      <li>Recommendation 3</li>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                      <h3>Air Quality</h3>
+                      <li>Recommendation 1</li>
+                      <li>Recommendation 1</li>
+                      <li>Recommendation 1</li>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                      <h3>Temperature</h3>
+                      <li>Recommendation 1</li>
+                      <li>Recommendation 1</li>
+                      <li>Recommendation 1</li>
+                    </div>
+                    <div id="menu3" class="tab-pane fade">
+                      <h3>Light Intensity</h3>
+                      <li>Recommendation 1</li>
+                      <li>Recommendation 1</li>
+                      <li>Recommendation 1</li>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-sm-4">
