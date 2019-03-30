@@ -10,11 +10,16 @@
     />
     <link rel="stylesheet" href="stylesheets/main.css" />
     <link rel="stylesheet" href="stylesheets/roundstats.css"/>
+    <link rel="stylesheet" href="stylesheets/colChart.css"/>
     <script src="js/model.js"></script>
+    <script src="js/charts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts.js"></script>
   </head>
   <body onload="fire()">
+    
+
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -60,9 +65,10 @@
           <h2>HealthSpace</h2>
           <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#section1">Dashboard</a></li>
-            <li><a href="#section2">Live Health Tracker</a></li>
-            <li><a href="#section3">Health History</a></li>
-            <li><a href="#section3">Health Tools</a></li>
+            <li><a href="#section2">Features</a></li>
+            <li><a href="#section3">Future Releases</a></li>
+            <li><a href="mailto: contact@agroncela.com">Contact Us</a></li>
+            
           </ul>
           <br />
         </div>
@@ -77,11 +83,15 @@
           <div id="tempSmsAlert" class="container">
   </div>
           <h1>Welcome to HealthSpace</h1>
+          
+          
           <h3 id="">Track your organisations health data</h3>
-            <p>HealthSpace lets you track your overall organisations health & wellbeing by tracking the air-quality, temperature and light intensity.</p>
-            <p>Based on the collected data, we compute IHS (Indoor Health Score)</p>
+            <p>HealthSpace lets you track your IHS (Indoor Health Score) by tracking the air-quality, temperature and light intensity.</p>
             
-            <div class="well">
+            <div class="row" style="padding: 30px;"> 
+               
+            <img class="col-sm-12" src="assets/Sydney-iot-air-quality-infographic.png" alt="SydneyIOT - Air quality infographic">
+          </div><div class="well">
                 <h4 class="totalScore"><span>IHS: <img class="hearticon" style="max-width:60px;" src="assets/heartIcon.png" alt="HeathScore"> </span><span id="HealthScoreValue"></span>/100</h4>
               </div>
 
@@ -115,74 +125,73 @@
             </div>-->
           </div>
           <div class="row">
-            <div class="col-sm-4">
+            <!--<div class="col-sm-4">
               <div class="well">
                 <p>Text</p>
-                <p>Text</p>
-                <p>Text</p>
+                
+              </div>
+            </div>-->
+            <div class="col-sm-2">
+              </div>
+            <div class="col-sm-6">
+              <div class="well">
+                
+                <div id="chart" style="max-width: 600px;
+          margin: 35px auto;">
+          </div>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <div class="well">
-                <p>Text</p>
-                <p>Text</p>
-                <p>Text</p>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="well">
-                <p>Text</p>
-                <p>Text</p>
-                <p>Text</p>
+                  <iframe style="
+                  
+                  z-index: 999"
+                  allow="microphone;"
+                  width="350"
+                  height="455"
+                  src="https://console.dialogflow.com/api-client/demo/embedded/0b5138e1-e206-4971-837c-d48e93fc7378">
+              </iframe>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-8">
+              <div class="col-sm-2">
+                  <!--<div class="well">
+                    <p>Text</p>
+                  </div>-->
+                </div>
+            <div class="col-sm-6">
               <div class="well">
                 <div class="container">
                   <h2>Data powered recommendations</h2>
-                  <p>Depending on your organizaional health data, we provide curated actionable insights to imrove your indoor environment.</p>
+                  <h4>Depending on your organizaional health data, we provide curated actionable insights to improve your indoor environment.</h4>
                 
                   <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">Recommendations</a></li>
-                    <li><a data-toggle="tab" href="#menu1">Air Quality</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Temperature</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Light intensity</a></li>
+                    <li class="active"><a data-toggle="tab" href="#home">Air Quality</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Temperature</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Light intensity</a></li>
                   </ul>
                 
                   <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
                       <h3>Recommendations</h3>
-                      <li>Recommendation 1</li>
-                      <li>Recommendation 2</li>
-                      <li>Recommendation 3</li>
+                      <div class="uli" id="air-rec"></div>
                     </div>
                     <div id="menu1" class="tab-pane fade">
-                      <h3>Air Quality</h3>
-                      <li>Recommendation 1</li>
-                      <li>Recommendation 1</li>
-                      <li>Recommendation 1</li>
+                      <h3>Recommendations</h3>
+                      <div id="temp-rec"></div>
                     </div>
                     <div id="menu2" class="tab-pane fade">
-                      <h3>Temperature</h3>
-                      <li>Recommendation 1</li>
-                      <li>Recommendation 1</li>
-                      <li>Recommendation 1</li>
-                    </div>
-                    <div id="menu3" class="tab-pane fade">
-                      <h3>Light Intensity</h3>
-                      <li>Recommendation 1</li>
-                      <li>Recommendation 1</li>
-                      <li>Recommendation 1</li>
+                        <h3>Recommendations</h3>
+                        <div id="light-rec"></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <div class="well">
-                <p>Text</p>
+              <a class="twitter-timeline" href="https://twitter.com/SydneyIot?ref_src=twsrc%5Etfw">Tweets by SydneyIot</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
               </div>
             </div>
           </div>

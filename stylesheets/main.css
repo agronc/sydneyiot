@@ -35,3 +35,13 @@
   width: 40px;
   height: 40px;
 }
+.custom-list {
+  list-style-image: url("../assets/bulletpoint-icon-transparent-iot.png") !important;
+  text-align: left;
+  margin: 0;
+  font-size: 18px;
+}
+#chart {
+  max-width: 650px;
+  margin: 35px auto;
+}
