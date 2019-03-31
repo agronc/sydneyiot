@@ -8,7 +8,7 @@ const authToken = "your auth token";
 
 const client = new twilio(accountSid, authToken);
 
-const twilioNumber = "+61488841170"; // your twilio phone number
+const twilioNumber = "twilio number"; // your twilio phone number
 
 //do a if statement here check latest update to see if temp>x
 exports.textStatus = functions.database
@@ -26,7 +26,7 @@ exports.textStatus = functions.database
     });
     const textMessage = {
       body: `Temperature is above the recommended threshold`,
-      to: "+61424335376", // Text to this number
+      to: "your number", // Text to this number
       from: twilioNumber // From a valid Twilio number
     };
 
