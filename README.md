@@ -26,12 +26,29 @@ We introuced unit for combining all the datapoints. The formula combines (temper
 
 ## Setting up the IOT Development board
 
-Step 1. Connect your AVR-IOT Board to your PC Via USB Cable. If you have purchased a AirQuality Click sensor (MQ-135), you can add the sensor on top of the board, or connect it via a breadboard as follows;
-![]<(screenshots/AVR-IOTsetup.png)
+Step 1. Connect your AVR-IOT Board to your PC Via USB Cable. 
+Step 2. You will be prompted by the curiosity board.
+Step 3. From the readme file in curiosity, you will be taken to the web-dashboard to connect via your wifi credentials.
+Step 4. After your wifi credentials are entered, the config file can be added to your curiosity drive.
+Here is a visual demo on how to acieve this: [link] https://www.youtube.com/watch?v=WK4ljyKDMIQ
 
 ## Installing/adding new sensors to the board - Adding AirQuality Click Board. <a href="https://www.mikroe.com/air-quality-click">AirQuality Sensor link</a>
+If you have purchased a AirQuality Click sensor (MQ-135), you can add the sensor on top of the board, or connect it via a breadboard as follows; However, it is recommended you connect it via breadboard, otherwise the airQuality sensor will block the light and temperature sensor which would compromise the data quality.
+
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/AVR-IOTsetup.png?token=AQScVwljUJi-YUZQ1Vpt6qTIfEAqzNYxks5cqePlwA%3D%3D" height="400">
 
 ## Connecting the AVR-IOT to the cloud
+The first step is to connect your board to the cloud. For step by step instructions, please follow this video as it goes in-depth of how to connect it. [link] https://www.youtube.com/watch?v=WK4ljyKDMIQ
+
+At this stage, you will only see two sensor data being displayed. hat is light and temperature since the Air Quality Board has not yet been setup within the board. In order to do that, follow the easy steps below;
+
+Step 1: Depending if your Sensor came with pinheaders soldiered in. You can follow this guide to connect the sensor with the pins and also provides a overview on the sensor itself: https://download.mikroe.com/documents/add-on-boards/click/air-quality/air-quality-click-manual-v100.pdf
+
+Step 2: After soldiering pin headers on the airquality sensor and the board, here are the items required to make the hardware work together;
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/sydney-iot-hardware.png?token=AQScVxM5uYkwmb9pIml3fqcr7I-Hdxq3ks5cqedxwA%3D%3D" height="400">
+
+
+After you have successfully connected your board to the cloud and can see the sensor data, it's time to connect your board to Firebase Real time data base, so it can be used in this project.
 
 ## Firebase Realtime Database setup
 
