@@ -118,13 +118,118 @@ In order to setup cloud functions to send automated SMS, you will need two items
 
 Once you are familiar with how cloud functions work, you can create one either through the command line interface or the web. Instructions on how to access your cloud functions via console can be found here: https://cloud.google.com/functions/docs/quickstart-console
 
-When you are ready to setup you cloud functions, open the firecast folder from this project (it is included in the downloaded project that you have previously made.
+When you are ready to setup you cloud functions, open the firecast folder from this project (it is included in the downloaded project that you have previously made. All the functions code is stored within the subfolder called functions. For ease of access, here is the url that contains all the logic for the cloud functions: https://github.com/agronc/sydneyiot/blob/master/firecast/functions/index.js
+
+Once you open the file, you will need to update the credentials for your twilio api which you have previously created.
+
+The setings to be updated are as follows;
+
+``const twilio = require("twilio");
+const accountSid = "your account sid";
+const authToken = "your auth token";``
+
+Secondly, all instances of ``.ref("avr-iot/data/01234245A3E58A0BFE/")`` Will need updating to point to your device ID, similiar to the previous step.
+
+Once you have made the changes, through the console (found in this guide: https://cloud.google.com/functions/docs/quickstart-console) you can push the functions to your Firebase account.
+
+At this point, every new data created that meets the criteria from the function code, will trigger a twilio API call to send an SMS alert.
+
+Feel free to spend sometime reading the code an comments, to familiarise yourself with different functions.
 
 ## Up and running with Dialogflow
 
-## Hosting your project on a live website. Our project hosted here: sydneyiot.com.au/health
+So you are still reading this eh?
+This Part can be challenging, as there are several ways to configure the chatbot AI.
+However, you can follow these steps, to replicate my project.
+Firstly, go to dialogflow website and signup for a free account (no need to upgrade account for this project) link: https://dialogflow.com/
 
-## Discussion and additional notes
+Step 1: you will need to create an agent (aka chatbot).
+Step 2: During setup, under Google project, select your google project that you have preveiously created, this will allow you to connect your chatbot to read the data from cloud functions and firebase.
+Step 3: After creating your project, head over to the intents section. Intents can be described as actions or patterns detected by the agent based on user query. If a user asks for temperature, it will link to an intent (if its created) and reply accordingly.
+Your Intent section should appear like this, once all intents have been created.
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/dialogflowS1.png?token=AQScV1YtZMyDKaBjcwOPjBb51Z64qbBoks5cqfJ4wA%3D%3D" height="400">
+
+Please note depending on your project, these intent names can be called anything (though keep them descriptive to their function). I would also advice not including spaces in your naming as you will later use these names in the next few steps.
+
+Step 4: Now the fun part, training your intent! If your intent is about reading temperature, add queries that you believe a user may ask. The more variants you add, the better the ML training alogrithm will perform.
+Here is a quick look of how it should appear
+<img src=";https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/dialogflows2.png?token=AQScV0XOxV1ix-vyKVq_LXu4Ck1QaQUgks5cqfLRwA%3D%3D" height="400">
+
+Step 5: After you have tested your intent, make sure you have turned on fulfillment. This is critical for the next step.
+Your settings should appear as follows;
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/dialogflows3.png?token=AQScVxPDeCBqJ10k0BahAdPUSxypINdXks5cqfM3wA%3D%3D" height="400">
+
+Step 6: once you are happy with the training data, makes sure to click save, and let the training begin.
+
+Step 7: Create any other intents that you might want to include, these could be your sensor data such as humidity or anything else that you may be recording.
+
+Step 8: After you have created your intents, go to the fulfillment section which can be seen in the main menu.
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/dialogflows4.png?token=AQScV3ClstO1za8KiEscat7w94vaHFMMks5cqfOhwA%3D%3D" height="400">
+
+Step 9: Since we are already using cloud functions, it would make sense to do the same for the chatbot AI.
+Thus, we will use the inline cloud function editor for our purpose (which also allows us to access realtime data from Firebase).
+Your Screen should now look something like this;
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/dialogflows5.png?token=AQScV6WMSdpetho8SdYDthVWwc1HbPHUks5cqfQCwA%3D%3D" height="400">
+
+Step 10: Since you are now a cloud functions expert, we can reuse similar logic that we previously build in cloud functions. After enabling your inline editor, your screen should have some default code ready. This code is necessary, however you can delete the commented sections.
+Your screenshould now appear as follows;
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/dialogflows6.png?token=AQScV1tUiRUgKf8f8uC9jUrPgHWXI5zXks5cqfQDwA%3D%3D" height="400">
+
+Step 11 and onwards:
+
+A note to keep in-mind, the inline editor cloud function within Dialogflow simply acts as an interface for the function hosted within firebase cloud functions. However, please keep in-mind as you "Deply" new code, you may lose existing versions, so it's highly recommended to keep a local copy.
+
+The main purpose of using the cloud function for Dialogflow is to provide ease of access to our data via firebase api.
+
+To setup firebase read/write, you will need to include the following constants within the inline editor;
+``const functions = require('firebase-functions');
+const admin = require("firebase-admin");
+const {WebhookClient} = require('dialogflow-fulfillment');
+const {Card, Suggestion} = require('dialogflow-fulfillment');
+ 
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: 'https://avr-iot-f1693.firebaseio.com/'
+}); ``
+
+After you have updated the above code, you can now start adding functions and logic for you chatbot.
+
+Firstly, each function created will require an intent Map for triggering your functions.
+The code is as follows (you can add more intent maps as you create more intents within dialogflow);
+``  let intentMap = new Map();
+  intentMap.set('Default Welcome Intent', welcome);
+  intentMap.set('Default Fallback Intent', fallback);
+  intentMap.set('readAir', handleReadAir);
+  agent.handleRequest(intentMap);
+});``
+
+In this example, we demonstrate how we read the data from firebase, when an intent is triggered by the user.
+If you remember previously, we create and trained our intent to understand various questions such as "temperature status".
+Once a user asks a similar question, an intent is triggered which consequently calls the function below (in our example);
+``    function handleReadAir(agent) {
+    return admin.database().ref('avr-iot/data/01234245A3E58A0BFE/').limitToLast(1).once('value').then((snapshot) => {
+    const value = snapshot.child(Object.keys(snapshot.val())[0] + '/AirQuality').val();//this gets the latest value of AirQuality
+      if (value < 350 ) { //Perform some logic on the value
+      agent.add(`Your air quality value is ${value}` + ' which is within the recommended range');//reply to the user
+      }
+      else {
+        agent.add(`Your air quality value is ${value}`);//otherwise we have a default response.
+      }
+    });
+  }``
+  
+You will notice that we use ``agent.add()`` in the above function, this component returns an answer to the user based on which statement it falls under. Further, we use the data stored in the 'value' variable to provide the user with an actual value. Variables on cloud functions can be used as ``${constant/variable name}``.
+
+The above steps will allow you to get started with the basics of using chatbots via firebase to read data from your AVR-IOT development board. 
+
+In the very near future, we will be covering more topics and tutorials on how to setup each components in-depth. 
+
+If you have any questions, feel free to get in touch via the weblink: www.sydneyiot.com.au/health
+
+  
+## To view the project live, please visit the following URL: sydneyiot.com.au/health
+
+
 
 
 
