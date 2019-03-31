@@ -56,6 +56,13 @@ Step 5: Search in the search bar for "AVR IoT WG Sensor Node with AirQuality Cli
 The result should appear like this;
 <img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/amtelstudio-air-quality-clickboard.png?token=AQScV9hAjSvuyrRYQlipJKXOBZZCqP0Cks5cqeknwA%3D%3D" height="400">
 
+Step 6: After downloading the example, open the example in Atmel START
+
+Step 7: In Atmel Studio 7 go to => File->Import->Atmel Start Project.
+
+Step 8: now you are ready to build the project into the board and get ready to submit sensor data to the cloud.
+To build the code into the board, simply click on the build button as below;
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/build-amtel-start.png?token=AQScV88l6xNuZgz0AGtDC4jc0yjrarGkks5cqeqBwA%3D%3D" height="200">
 
 After you have successfully connected your board to the cloud and can see the sensor data, it's time to connect your board to Firebase Real time data base, so it can be used in this project.
 
