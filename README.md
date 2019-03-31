@@ -97,7 +97,28 @@ Step 5: once you have made the changes in the config file, you are ready to conn
 
 ## Displaying Data on a webpage/Dashboard
 
+To display data on the web, you will need to open model.js This file hosts the javascript which is used to read the data in real time from firebase, and display it on the web-dashboard.
+
+Firstly, once you open the file, replace all instances where a device id is referenced, and replace it with yours.
+
+Here is an example;
+``var lastChild_Rec = firebase
+    .database()
+    .ref("avr-iot/data/01234245A3E58A0BFK/") //replace this path with your device ID
+    .limitToLast(1);``
+  
+ Once you have replaced all instances of the references to point to your cloud database, save all files that you made changes to and re-open the index.html file.
+ 
+ Once the file opens, you should see that the dashboards is displaying data of your sensor in real time, and the colour of the charts should change based on the values being read. To modify these settings, you can go back to model.js and follow the instructions in the comments on what each setting performs.
+ 
 ## Setting up Cloud Functions (Firebase) for Hosting SMS/Twilio APIs
+In order to setup cloud functions to send automated SMS, you will need two items.
+1- A twilio SMS account which you can sign up for free and use the trial for this project: https://www.twilio.com/
+2- Cloud functions, which can be found in the main menu of you Firebase dashboard.
+
+Once you are familiar with how cloud functions work, you can create one either through the command line interface or the web. Instructions on how to access your cloud functions via console can be found here: https://cloud.google.com/functions/docs/quickstart-console
+
+When you are ready to setup you cloud functions, open the firecast folder from this project (it is included in the downloaded project that you have previously made.
 
 ## Up and running with Dialogflow
 
