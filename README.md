@@ -26,9 +26,10 @@ We introuced unit for combining all the datapoints. The formula combines (temper
 
 ## Setting up the IOT Development board
 
-## Installing/adding new sensors to the board - Adding AirQuality Click Board. <a href="https://www.mikroe.com/air-quality-click">AirQuality Sensor link</a>
+Step 1. Connect your AVR-IOT Board to your PC Via USB Cable. If you have purchased a AirQuality Click sensor (MQ-135), you can add the sensor on top of the board, or connect it via a breadboard as follows;
+![]<(screenshots/AVR-IOTsetup.png)
 
-##(Optional) Discussion on Hardware inetgration methods
+## Installing/adding new sensors to the board - Adding AirQuality Click Board. <a href="https://www.mikroe.com/air-quality-click">AirQuality Sensor link</a>
 
 ## Connecting the AVR-IOT to the cloud
 
