@@ -153,7 +153,7 @@ Please note depending on your project, these intent names can be called anything
 
 Step 4: Now the fun part, training your intent! If your intent is about reading temperature, add queries that you believe a user may ask. The more variants you add, the better the ML training alogrithm will perform.
 Here is a quick look of how it should appear
-<img src=";https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/dialogflows2.png?token=AQScV0XOxV1ix-vyKVq_LXu4Ck1QaQUgks5cqfLRwA%3D%3D" height="400">
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/dialogflows2.png?token=AQScV0XOxV1ix-vyKVq_LXu4Ck1QaQUgks5cqfLRwA%3D%3D" height="400">
 
 Step 5: After you have tested your intent, make sure you have turned on fulfillment. This is critical for the next step.
 Your settings should appear as follows;
