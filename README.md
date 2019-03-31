@@ -47,6 +47,15 @@ Step 1: Depending if your Sensor came with pinheaders soldiered in. You can foll
 Step 2: After soldiering pin headers on the airquality sensor and the board, here are the items required to make the hardware work together;
 <img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/sydney-iot-hardware.png?token=AQScVxM5uYkwmb9pIml3fqcr7I-Hdxq3ks5cqedxwA%3D%3D" height="400">
 
+Step 3: Go to: https://start.atmel.com/ to get started in downloading the requires software/middleware.
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/avr-iot-wg-amtel.png?token=AQScV_ZIrEz3SoMm8rBOCnnDcACaYvFXks5cqehfwA%3D%3D" height="400">
+
+Step 4: Click on browser examples
+
+Step 5: Search in the search bar for "AVR IoT WG Sensor Node with AirQuality Click"
+The result should appear like this;
+<img src="https://raw.githubusercontent.com/agronc/sydneyiot/master/screenshots/amtelstudio-air-quality-clickboard.png?token=AQScV9hAjSvuyrRYQlipJKXOBZZCqP0Cks5cqeknwA%3D%3D" height="400">
+
 
 After you have successfully connected your board to the cloud and can see the sensor data, it's time to connect your board to Firebase Real time data base, so it can be used in this project.
 
